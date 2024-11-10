@@ -6,7 +6,7 @@ export class YoutubeController {
   constructor(private readonly youtubeService: YoutubeService) {}
 
   @Get('video/:url')
-  getPrice(@Param('url') url: string): Promise<any> {
-    return this.youtubeService.getVideoFile(url);
+  downloadVideo(@Param('url') url: string): Promise<any> {
+    return this.youtubeService.downloadVideoFile(url);
   }
 }

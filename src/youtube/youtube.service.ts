@@ -8,18 +8,25 @@ https://www.npmjs.com/package/@ffmpeg-installer/ffmpeg
 
 https://youtu.be/W2YwMuxzyJY?si=DMwxdRTMLf7pZeYm
 
+https://www.pinecone.io/
+https://milvus.io/
+
 
 To do:
-- integrar ChatGPT Whisper
-- Probar a transcribir un audio (qué formato debería tener? un buffer? o un stream?)
-- Crear la DB y guardar la transcripción
-- Si el formato de whisper es buffer, hacer función para crear un buffer al descargar el video de youtube y devolverlo en el servicio
-- Hacer otro endpoint que reciba un audio y que cree el buffer o stream
+x integrar ChatGPT Whisper
+x Probar a transcribir un audio (qué formato debería tener? un buffer? o un stream?)
+- Crear la DB en postgresql
+- configurar sequelize
+- configurar migrations
+- crear la tabla para los audios (con migrations)
+- crear modulo de la db para hacer un get y un post y put de audios
+- Usar el modulo de youtube para guardar el audio
+  - crear otro endpoint que cree el stream para mandar a whisper
+  - después de recibir los datos de whisper, mandar a guardarlo a la db (audio, data y link de youtube) 
 - Mandar transcripción para analizar con chatGPT (crear contexto e intentar pasarle las categorias a chatgpt que ya tengo para que incluya en una de ellas el audio o que cree una nueva categoria, sacar palabras clave, etc)
 - definir qué parámetros se quieren obtener (resumen, keywords, category, topic, etc)
 - guardar analisis
-- crear la búsqueda semantica
-- crear backend con python
+- crear la búsqueda semantica (modulo, usar https://www.pinecone.io/)
 - crear vectores y guardarlos, (definir si se debe guardar por keyword o todo junto, según lo que mejore la búsqueda semantica)
 - hacer el servicio para comparar 
 - hacer función para obtener audios de una playlist (probar integrando la api de youtube y que si se puede se use un webhook o algo así)
@@ -157,8 +164,7 @@ export class YoutubeService {
     ],
   };
 
-  async getVideoFile(url: string): Promise<object> {
-    console.log('url: ', url);
+  async downloadVideoFile(url: string): Promise<object> {
     // Se obtienen los formatos de audio disponibles para el video
     const info = await ytdl.getInfo(url);
     let audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
