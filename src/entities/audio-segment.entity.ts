@@ -2,17 +2,23 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Audio } from './audio.entity';
 
-@Entity('audio_segments')
-export class AudioSegments {
+@Entity('audio_segment')
+export class AudioSegment {
   @PrimaryGeneratedColumn('increment', {
     name: 'id',
     type: 'bigint',
   })
   id: number;
+
+  @Column({ type: 'bigint', name: 'audio_id' })
+  audioId: number;
 
   @Column('bigint', { name: 'segment_id' })
   segmentId: number;
@@ -49,4 +55,10 @@ export class AudioSegments {
 
   @UpdateDateColumn({ name: 'updated_at', default: () => 'NOW()' })
   updatedAt?: string;
+
+  // ------- Relations -------
+
+  @ManyToOne(() => Audio, (audio) => audio.id, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'audio_id', referencedColumnName: 'id' })
+  audio: Audio;
 }

@@ -1,2 +1,2 @@
-export * from './audio-segments.entity';
-export * from './audios.entity';
+export * from './audio-segment.entity';
+export * from './audio.entity';

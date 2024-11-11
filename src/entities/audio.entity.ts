@@ -2,12 +2,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { AudioSegment } from './audio-segment.entity';
 
-@Entity('audios')
-export class Audios {
+@Entity('audio')
+export class Audio {
   @PrimaryGeneratedColumn('increment', {
     name: 'id',
     type: 'bigint',
@@ -40,4 +42,9 @@ export class Audios {
 
   @UpdateDateColumn({ name: 'updated_at', default: () => 'NOW()' })
   updatedAt?: string;
+
+  // ------- Relations -------
+
+  @OneToMany(() => AudioSegment, (audioSegment) => audioSegment.audio)
+  audioSegments: AudioSegment[];
 }

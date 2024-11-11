@@ -21,6 +21,7 @@ x crear entidad de audios
 x crear entidad de segments
 x configurar migrations
 x crear la tabla para los audios (con migrations)
+- hacer la foreing key entre audios y segments (migration y entities)
 - crear modulo de la db para hacer un get, post y put de audios
 - Usar el modulo de youtube para guardar el audio
   - crear otro endpoint que cree el stream para mandar a whisper

@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateSegmentsTable1731316790582 implements MigrationInterface {
+export class CreateSegmentTable1731316790582 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'audio_segments',
+        name: 'audio_segment',
         columns: [
           {
             name: 'id',
@@ -83,6 +83,6 @@ export class CreateSegmentsTable1731316790582 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('audio_segments');
+    await queryRunner.dropTable('audio_segment');
   }
 }
