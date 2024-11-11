@@ -15,11 +15,13 @@ https://milvus.io/
 To do:
 x integrar ChatGPT Whisper
 x Probar a transcribir un audio (qué formato debería tener? un buffer? o un stream?)
-- Crear la DB en postgresql
-- configurar sequelize
-- configurar migrations
-- crear la tabla para los audios (con migrations)
-- crear modulo de la db para hacer un get y un post y put de audios
+x Crear la DB en postgresql
+x configurar typeorm
+x crear entidad de audios
+x crear entidad de segments
+x configurar migrations
+x crear la tabla para los audios (con migrations)
+- crear modulo de la db para hacer un get, post y put de audios
 - Usar el modulo de youtube para guardar el audio
   - crear otro endpoint que cree el stream para mandar a whisper
   - después de recibir los datos de whisper, mandar a guardarlo a la db (audio, data y link de youtube) 
@@ -37,6 +39,10 @@ x Probar a transcribir un audio (qué formato debería tener? un buffer? o un st
 - configurar la cloud architecture
 - tratar de solucionar el problema de ipv6 de youtube
 
+Ideas:
+- tener en postgresql en una tabla los audios y en otra los segments, 
+  pero también mandar a guardar a la db de vectores los segmentos y la transcripción
+  la sincronización entre las dos db sería usando CQRS
 
  */
 
