@@ -21,13 +21,13 @@ x crear entidad de audios
 x crear entidad de segments
 x configurar migrations
 x crear la tabla para los audios (con migrations)
-- hacer la foreing key entre audios y segments (migration y entities)
+x hacer la foreing key entre audios y segments (migration y entities)
 - crear modulo de la db para hacer un get, post y put de audios
 - Usar el modulo de youtube para guardar el audio
   - crear otro endpoint que cree el stream para mandar a whisper
   - después de recibir los datos de whisper, mandar a guardarlo a la db (audio, data y link de youtube) 
-- Mandar transcripción para analizar con chatGPT (crear contexto e intentar pasarle las categorias a chatgpt que ya tengo para que incluya en una de ellas el audio o que cree una nueva categoria, sacar palabras clave, etc)
 - definir qué parámetros se quieren obtener (resumen, keywords, category, topic, etc)
+- Mandar transcripción para analizar con chatGPT (crear contexto e intentar pasarle las categorias a chatgpt que ya tengo para que incluya en una de ellas el audio o que cree una nueva categoria, sacar palabras clave, etc)
 - guardar analisis
 - crear la búsqueda semantica (modulo, usar https://www.pinecone.io/)
 - crear vectores y guardarlos, (definir si se debe guardar por keyword o todo junto, según lo que mejore la búsqueda semantica)

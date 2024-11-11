@@ -22,7 +22,7 @@ export class Audio {
   @Column('varchar', { name: 'link', nullable: true })
   link?: string;
 
-  @Column('varchar', { name: 'transcription', nullable: false })
+  @Column('text', { name: 'transcription', nullable: false })
   transcription: string;
 
   @Column('varchar', { name: 'keywords', nullable: true })
@@ -33,6 +33,9 @@ export class Audio {
 
   @Column('varchar', { name: 'description', nullable: true })
   description?: string; // texto descriptivo creado a partir de la info obtenida
+
+  @Column('text', { name: 'tokens', nullable: true })
+  tokens?: string; // arreglo del vector de la descripción (se puede usar luego en la búsqueda)
 
   @Column('float8', { name: 'duration' })
   duration: number;

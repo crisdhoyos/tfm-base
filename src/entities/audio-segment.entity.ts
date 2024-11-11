@@ -32,10 +32,10 @@ export class AudioSegment {
   @Column('float8', { name: 'end' })
   end: number;
 
-  @Column('varchar', { name: 'text', nullable: true })
+  @Column('text', { name: 'text', nullable: true })
   text?: string; // transcripcion
 
-  @Column('varchar', { name: 'tokens', nullable: true })
+  @Column('text', { name: 'tokens', nullable: true })
   tokens?: string; // arreglo separado por comas
 
   @Column('float8', { name: 'temperature' })

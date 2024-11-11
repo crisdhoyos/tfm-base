@@ -25,7 +25,7 @@ export class CreateAudioTable1731314524405 implements MigrationInterface {
           },
           {
             name: 'transcription',
-            type: 'varchar',
+            type: 'text',
             isNullable: false,
           },
           {
@@ -41,6 +41,11 @@ export class CreateAudioTable1731314524405 implements MigrationInterface {
           {
             name: 'description',
             type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'tokens',
+            type: 'text',
             isNullable: true,
           },
           {

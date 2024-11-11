@@ -35,12 +35,12 @@ export class CreateSegmentTable1731316790582 implements MigrationInterface {
           },
           {
             name: 'text',
-            type: 'varchar',
+            type: 'text',
             isNullable: true,
           },
           {
             name: 'tokens',
-            type: 'varchar',
+            type: 'text',
             isNullable: true,
           },
           {
