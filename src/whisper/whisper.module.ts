@@ -8,5 +8,6 @@ import { WhisperService } from './whisper.service';
   imports: [HttpModule],
   controllers: [WhisperController],
   providers: [WhisperService, WhisperDomain],
+  exports: [WhisperService, WhisperDomain],
 })
 export class WhisperModule {}

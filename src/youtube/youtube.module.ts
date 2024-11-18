@@ -1,12 +1,12 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { AudiosModule } from '../audios/audios.module';
+import { IndexationModule } from '../indexation/indexation.module';
 import { YoutubeController } from './youtube.controller';
 import { YoutubeDomain } from './youtube.domain';
 import { YoutubeService } from './youtube.service';
 
 @Module({
-  imports: [HttpModule, AudiosModule],
+  imports: [HttpModule, IndexationModule],
   controllers: [YoutubeController],
   providers: [YoutubeService, YoutubeDomain],
 })
