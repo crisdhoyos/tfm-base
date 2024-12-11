@@ -26,11 +26,12 @@ x crear modulo de la db para hacer un get, post y put de audios
 x Usar el modulo de youtube para guardar el audio
   x crear otro endpoint que cree el stream para mandar a whisper
   x después de recibir los datos de whisper, mandar a guardarlo a la db (audio, data y link de youtube) 
-- definir qué parámetros se quieren obtener (resumen, keywords, category, topic, etc)
-- Mandar transcripción para analizar con chatGPT (crear contexto e intentar pasarle las categorias a chatgpt que ya tengo para que incluya en una de ellas el audio o que cree una nueva categoria, sacar palabras clave, etc)
-- guardar analisis
+x definir qué parámetros se quieren obtener (resumen, keywords, category, topic, etc)
+x Mandar transcripción para analizar con chatGPT (crear contexto e intentar pasarle las categorias a chatgpt que ya tengo para que incluya en una de ellas el audio o que cree una nueva categoria, sacar palabras clave, etc)
+x Crear modulo de embeddings con un metodo que reciba un array de textos y devuelva los embeddings calculados
 - crear la búsqueda semantica (modulo, usar https://www.pinecone.io/)
 - crear vectores y guardarlos, (definir si se debe guardar por keyword o todo junto, según lo que mejore la búsqueda semantica)
+- guardar analisis completo (analisis de chatgpt y embeddings) en el modulo de index
 - hacer el servicio para comparar 
 - hacer función para obtener audios de una playlist (probar integrando la api de youtube y que si se puede se use un webhook o algo así)
 - integrar el flujo de youtube descargando un audio con el análisis e indexación del audio
@@ -39,6 +40,10 @@ x Usar el modulo de youtube para guardar el audio
 - integrar los endpoints
 - configurar la cloud architecture
 - tratar de solucionar el problema de ipv6 de youtube
+
+Notas:
+- En pinecone se puede definir qué modelo de embedding se quiere usar, por ejemplo, para el de OpenAI ha que decirle a pinecone esto:
+embedding_model: text-embedding-ada-002
 
 Ideas:
 - Se podría poner en la tabla audios un type para saber si viene desde youtube o desde un archivo directo
