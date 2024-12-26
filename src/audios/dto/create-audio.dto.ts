@@ -1,4 +1,13 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
+import { Category } from '../../entities';
 
 export class CreateAudioDto {
   @IsString()
@@ -19,10 +28,6 @@ export class CreateAudioDto {
 
   @IsString()
   @IsOptional()
-  topics?: string; // lista separada por comas
-
-  @IsString()
-  @IsOptional()
   description?: string; // texto descriptivo creado a partir de la info obtenida
 
   @IsString()
@@ -32,6 +37,12 @@ export class CreateAudioDto {
   @IsNumber()
   @IsNotEmpty()
   duration: number;
+
+  @ValidateNested()
+  @IsArray()
+  @IsOptional()
+  @Type(() => Category)
+  categories?: Category[];
 
   // @IsNotEmpty()
   // @ValidateNested()

@@ -15,6 +15,7 @@ export class AudiosRepository {
     return await this.repository.find({
       relations: {
         audioSegments: true,
+        categories: true,
       },
     });
   }
@@ -24,6 +25,7 @@ export class AudiosRepository {
       where: { id },
       relations: {
         audioSegments: true,
+        categories: true,
       },
     });
   }

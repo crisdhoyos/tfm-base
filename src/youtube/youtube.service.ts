@@ -29,8 +29,9 @@ x Usar el modulo de youtube para guardar el audio
 x definir qué parámetros se quieren obtener (resumen, keywords, category, topic, etc)
 x Mandar transcripción para analizar con chatGPT (crear contexto e intentar pasarle las categorias a chatgpt que ya tengo para que incluya en una de ellas el audio o que cree una nueva categoria, sacar palabras clave, etc)
 x Crear modulo de embeddings con un metodo que reciba un array de textos y devuelva los embeddings calculados
-- crear la búsqueda semantica (modulo, usar https://www.pinecone.io/)
-- crear vectores y guardarlos, (definir si se debe guardar por keyword o todo junto, según lo que mejore la búsqueda semantica)
+x crear la búsqueda semantica (modulo, usar https://www.pinecone.io/)
+x crear vectores y guardarlos, (definir si se debe guardar por keyword o todo junto, según lo que mejore la búsqueda semantica)
+- crear servicio para obtener las categorías existentes (quizá también debería guardarse las que se usen en una tabla nueva ¿?)
 - guardar analisis completo (analisis de chatgpt y embeddings) en el modulo de index
 - hacer el servicio para comparar 
 - hacer función para obtener audios de una playlist (probar integrando la api de youtube y que si se puede se use un webhook o algo así)

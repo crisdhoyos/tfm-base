@@ -2,11 +2,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { AudioSegment } from './audio-segment.entity';
+import { Category } from './category.entity';
 
 @Entity('audio')
 export class Audio {
@@ -28,8 +31,8 @@ export class Audio {
   @Column('varchar', { name: 'keywords', nullable: true })
   keywords?: string; // lista separada por comas
 
-  @Column('varchar', { name: 'topics', nullable: true })
-  topics?: string; // lista separada por comas
+  // @Column('varchar', { name: 'topics', nullable: true })
+  // topics?: string; // lista separada por comas
 
   @Column('varchar', { name: 'description', nullable: true })
   description?: string; // texto descriptivo creado a partir de la info obtenida
@@ -50,4 +53,18 @@ export class Audio {
 
   @OneToMany(() => AudioSegment, (audioSegment) => audioSegment.audio)
   audioSegments: AudioSegment[];
+
+  @ManyToMany(() => Category)
+  @JoinTable({
+    name: 'audio_category', // Nombre de la tabla intermedia
+    joinColumn: {
+      name: 'audio_id', // Columna que referencia a Audio
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'category_id', // Columna que referencia a Category
+      referencedColumnName: 'id',
+    },
+  })
+  categories: Category[];
 }
