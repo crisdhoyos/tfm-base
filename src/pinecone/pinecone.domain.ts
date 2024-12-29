@@ -4,7 +4,7 @@ import {
   Pinecone,
   ScoredPineconeRecord,
 } from '@pinecone-database/pinecone';
-import { ISavePineconeEmbedding } from './interfaces';
+import { IAudioMetadata, ISavePineconeEmbedding } from './interfaces';
 import { PINECONE_NAMESPACE } from './pinecone.constants';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class PineconeDomain {
    * Por ejemplo, si los segmentos que se dan son estos: ["segmento1","segmento2"]
    * Retornará los valores así: [(array de tokens para el segmento 1), (array de tokens para el segmento 2)]
    * @param segments Arreglo de textos que se desean convertir a tokens
-   * @returns 
+   * @returns
    */
   // async createEmbeddings(segments: string[]): Promise<Array<number[]>> {
   //   const embeddings = await this.pc.inference.embed(PINECONE_MODEL, segments, {
@@ -52,7 +52,7 @@ export class PineconeDomain {
   async search(
     searchVector: number[],
     numberOfResults: number = 3,
-  ): Promise<ScoredPineconeRecord[]> {
+  ): Promise<ScoredPineconeRecord<IAudioMetadata>[]> {
     const result = await this.pcIndex.namespace(PINECONE_NAMESPACE).query({
       topK: numberOfResults,
       vector: searchVector,
@@ -60,6 +60,6 @@ export class PineconeDomain {
       includeMetadata: true,
     });
     console.log('Pinecone read tokens used:', result.usage?.readUnits);
-    return result.matches;
+    return result.matches as ScoredPineconeRecord<IAudioMetadata>[];
   }
 }

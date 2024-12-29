@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, UpdateResult } from 'typeorm';
+import { In, Repository, UpdateResult } from 'typeorm';
 import { Audio } from '../entities';
 import { CreateAudioDto } from './dto';
 
@@ -15,6 +15,24 @@ export class AudiosRepository {
     return await this.repository.find({
       relations: {
         audioSegments: true,
+        categories: true,
+      },
+    });
+  }
+
+  async getByIds(ids: number[]): Promise<Audio[]> {
+    return await this.repository.find({
+      select: [
+        'id',
+        'name',
+        'link',
+        'keywords',
+        'description',
+        'duration',
+        'categories',
+      ],
+      where: { id: In(ids) },
+      relations: {
         categories: true,
       },
     });

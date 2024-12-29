@@ -31,11 +31,14 @@ x Mandar transcripción para analizar con chatGPT (crear contexto e intentar pas
 x Crear modulo de embeddings con un metodo que reciba un array de textos y devuelva los embeddings calculados
 x crear la búsqueda semantica (modulo, usar https://www.pinecone.io/)
 x crear vectores y guardarlos, (definir si se debe guardar por keyword o todo junto, según lo que mejore la búsqueda semantica)
-- crear servicio para obtener las categorías existentes (quizá también debería guardarse las que se usen en una tabla nueva ¿?)
-- guardar analisis completo (analisis de chatgpt y embeddings) en el modulo de index
-- hacer el servicio para comparar 
+x crear servicio para obtener las categorías existentes
+x guardar analisis completo (analisis de chatgpt y embeddings) en el modulo de index al crear el audio
+x hacer el servicio para el buscar los audios con un texto (primero obtener el embedding del texto y luego buscar en pinecone) 
+x integrar el flujo de youtube descargando un audio con el análisis e indexación del audio
+
+- crear servicio para obtener el listado de audios por categoria
 - hacer función para obtener audios de una playlist (probar integrando la api de youtube y que si se puede se use un webhook o algo así)
-- integrar el flujo de youtube descargando un audio con el análisis e indexación del audio
+- ?quizá incluir las categorías en pinecone para luego hacer la busqueda semantica por categoria?
 
 - empezar el desarrollo del front e integrar auth0.com
 - integrar los endpoints
@@ -52,6 +55,7 @@ Ideas:
 - tener en postgresql en una tabla los audios y en otra los segments, 
   pero también mandar a guardar a la db de vectores los segmentos y la transcripción
   la sincronización entre las dos db sería usando CQRS
+- Configurar un chat que reciba la transcripción total del audio y pueda responder preguntas sobre el audio
 
   Videos cortos:
 

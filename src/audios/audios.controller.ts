@@ -21,6 +21,11 @@ export class AudiosController {
     return this.audiosService.getAllAudios();
   }
 
+  @Get('search/:text')
+  searchAudios(@Param('text') text: string): Promise<Audio[]> {
+    return this.audiosService.searchAudios(text);
+  }
+
   @Get(':id')
   getAudioById(@Param('id', ParseIntPipe) id: number): Promise<Audio> {
     return this.audiosService.getAudioById(id);

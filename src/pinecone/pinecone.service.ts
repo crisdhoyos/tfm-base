@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ScoredPineconeRecord } from '@pinecone-database/pinecone';
-import { ISavePineconeEmbedding } from './interfaces';
+import { IAudioMetadata, ISavePineconeEmbedding } from './interfaces';
 import { PineconeDomain } from './pinecone.domain';
 
 @Injectable()
@@ -15,8 +15,10 @@ export class PineconeService {
   //   return await this.pineconeDomain.createEmbeddings(segments);
   // }
 
-  async search(searchVector: number[], numberOfResults: number = 3): Promise<ScoredPineconeRecord[]> {
+  async search(
+    searchVector: number[],
+    numberOfResults: number = 3,
+  ): Promise<ScoredPineconeRecord<IAudioMetadata>[]> {
     return await this.pineconeDomain.search(searchVector, numberOfResults);
   }
-
 }
