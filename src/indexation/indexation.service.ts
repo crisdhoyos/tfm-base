@@ -28,6 +28,7 @@ export class IndexationService {
     audioFile: Uploadable | fs.ReadStream,
     url: string,
     audioTitle: string = 'title',
+    youtubeId: string = '',
   ): Promise<IIndexationResult> {
     // se manda el audio a whisper y se obtiene la transcripción
     const data = await this.whisperService.getAudioTranscription(audioFile);
@@ -59,6 +60,7 @@ export class IndexationService {
     const audio = await this.audiosService.createAudio({
       name: audioTitle,
       link: url,
+      youtubeId,
       transcription: data.text,
       duration: Number(data.duration),
       categories: categoriesCreated,

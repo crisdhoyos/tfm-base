@@ -11,12 +11,26 @@ export class AudiosRepository {
     private readonly repository: Repository<Audio>,
   ) {}
 
-  async getAllAudios(): Promise<Audio[]> {
+  async getAllAudios(categoryId?: string): Promise<Audio[]> {
+    const whereCondition = categoryId
+      ? { categories: { id: Number(categoryId) } }
+      : {};
+
     return await this.repository.find({
+      select: [
+        'id',
+        'name',
+        'link',
+        'youtubeId',
+        'keywords',
+        'description',
+        'duration',
+        'categories',
+      ],
       relations: {
-        audioSegments: true,
         categories: true,
       },
+      where: whereCondition,
     });
   }
 
@@ -26,6 +40,7 @@ export class AudiosRepository {
         'id',
         'name',
         'link',
+        'youtubeId',
         'keywords',
         'description',
         'duration',

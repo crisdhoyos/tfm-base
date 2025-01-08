@@ -56,6 +56,7 @@ Ideas:
   pero también mandar a guardar a la db de vectores los segmentos y la transcripción
   la sincronización entre las dos db sería usando CQRS
 - Configurar un chat que reciba la transcripción total del audio y pueda responder preguntas sobre el audio
+- En un futuro se podría aceptar archivos de audio (a parte de los de youtube) y generar con AI una imagen personalizada para que se muestra en la lista
 
   Videos cortos:
 
@@ -110,6 +111,7 @@ export class YoutubeService {
     // Se obtienen la info y los formatos de audio disponibles para el video
     const info = await getAudioInfo(url);
     const audioTitle = info.videoDetails?.title || 'title';
+    const youtubeId = info.videoDetails?.videoId || '';
     const format = await getAudioFormat(info);
     // se obtiene el stream del audio para convertirlo a buffer
     const audioStream = downloadVideo(url, format);
@@ -119,6 +121,7 @@ export class YoutubeService {
       audioBuffer,
       url,
       audioTitle,
+      youtubeId,
     );
   }
 }

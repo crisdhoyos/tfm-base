@@ -25,14 +25,14 @@ export class Audio {
   @Column('varchar', { name: 'link', nullable: true })
   link?: string;
 
+  @Column('varchar', { name: 'youtube_id', nullable: true })
+  youtubeId?: string;
+
   @Column('text', { name: 'transcription', nullable: false })
   transcription: string;
 
   @Column('varchar', { name: 'keywords', nullable: true })
   keywords?: string; // lista separada por comas
-
-  // @Column('varchar', { name: 'topics', nullable: true })
-  // topics?: string; // lista separada por comas
 
   @Column('varchar', { name: 'description', nullable: true })
   description?: string; // texto descriptivo creado a partir de la info obtenida

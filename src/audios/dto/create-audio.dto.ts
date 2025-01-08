@@ -19,6 +19,10 @@ export class CreateAudioDto {
   link?: string;
 
   @IsString()
+  @IsOptional()
+  youtubeId?: string;
+
+  @IsString()
   @IsNotEmpty()
   transcription: string;
 

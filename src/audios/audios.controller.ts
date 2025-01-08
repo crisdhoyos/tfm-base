@@ -6,19 +6,20 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { UpdateResult } from 'typeorm';
 import { Audio } from '../entities';
 import { AudiosService } from './audios.service';
-import { CreateAudioDto } from './dto';
+import { CreateAudioDto, FilterAllAudiosDto } from './dto';
 
 @Controller('audios')
 export class AudiosController {
   constructor(private readonly audiosService: AudiosService) {}
 
   @Get('')
-  getAllAudios(): Promise<Audio[]> {
-    return this.audiosService.getAllAudios();
+  getAllAudios(@Query() data?: FilterAllAudiosDto): Promise<Audio[]> {
+    return this.audiosService.getAllAudios(data.categoryId);
   }
 
   @Get('search/:text')

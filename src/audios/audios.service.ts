@@ -14,8 +14,8 @@ export class AudiosService {
     private readonly pineconeService: PineconeService,
   ) {}
 
-  async getAllAudios(): Promise<Audio[]> {
-    return this.audiosRepository.getAllAudios();
+  async getAllAudios(categoryId?: string): Promise<Audio[]> {
+    return this.audiosRepository.getAllAudios(categoryId);
   }
 
   async searchAudios(text: string): Promise<Audio[]> {
